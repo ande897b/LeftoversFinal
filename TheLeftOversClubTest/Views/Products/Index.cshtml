@@ -1,0 +1,75 @@
+﻿@model IEnumerable<TheLeftOversClubTest.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div style="background-color: rgb(77, 78, 76); padding-top: 10px; padding-bottom: 10px; color: rgb(255, 255, 255);">
+    <div class="container">
+        Du er her: <b><a href="/" style="color: #fff; text-decoration:underline">Hjem</a></b><b>/Produkter</b>
+    </div>
+</div>
+<h1 style="font-size:20px; text-align: center; ">Dette er en liste over nuværende produkter hos Vitec MV</h1>
+
+
+<table class="table">
+
+    <thead>
+
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description) af produktet
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*<script>
+                function IsCursorOver(even) {
+
+                }
+            </script>*@
+        @{int count = 0;
+            string style = "background-color: #f2f2f2;cursor: Pointer;";}
+        @foreach (var item in Model)
+        {
+
+
+            <tr style="@style" onclick="location.href='Products/Details/'+@item.ProductID">
+
+                <td style="width:5%;">
+                    <img src="@Html.DisplayFor(modelItem => item.Picture)" width="35" height="35">
+                </td>
+                <td>
+                    <a style="font-family:Arial Black, Gadget, sans-serif; color:#4d4e4c ; font-size :20px" asp-action="Details" asp-route-id="@item.ProductID"> @Html.DisplayFor(modelItem => item.Description)</a>
+                </td>
+                <td style="font-family:Arial Black, Gadget, sans-serif; color:#4d4e4c;">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+                @*<td>
+                        <a asp-page="./Edit" asp-route-id="@item.ProductID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ProductID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ProductID">Delete</a>
+                    </td>*@
+
+            </tr>
+
+            if (count == 0)
+            {
+                count++;
+                style = "background-color: #BEDCE6;cursor: Pointer;";
+            }
+            else
+            {
+                count = 0;
+                style = "background-color: #F3F3F3;cursor: Pointer;";
+            }
+        }
+    </tbody>
+</table>

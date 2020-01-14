@@ -1,0 +1,27 @@
+﻿@model TheLeftOversClubTest.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div style="background-color: rgb(77, 78, 76); padding-top: 10px; padding-bottom: 10px; color: rgb(255, 255, 255);">
+    <div class="container">
+        Du er her: <b><a href="/index" style="color: #fff; text-decoration:underline">Hjem</a></b><b>></b><b><a href="/products" style="color: #fff; text-decoration:underline">Produkter</a></b><b>></b><b>@Html.DisplayFor(model => model.Description)</b>
+    </div>
+</div>
+<h1 style="text-align: center; font-size: 32px;">Her er information om produktet: @Html.DisplayFor(model => model.Description)</h1>
+
+
+<div style="width:100%; height:100%; float:left">
+    <div style="width:50%; height: 100%; max-width:50%; float: left">
+        <h1>
+            @Html.DisplayNameFor(model => model.AdvancedDescription)
+        </h1>
+        @Html.DisplayFor(model => model.AdvancedDescription)
+    </div>
+    <div style="width: 50%; height: 100%; max-width:50%; float: left;text-align: center">
+        <h1 style="text-align: center">
+            @Html.DisplayNameFor(model => model.Price)
+        </h1>
+        @Html.DisplayFor(model => model.Price)
+    </div>
+</div>
